@@ -1,0 +1,19 @@
+{
+  "name": "react-around-auth",
+  "version": "1.0.0",
+  "description": "Around the U.S. project on React, featuring authorization and registration.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MurrK-smb/react-around-auth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MurrK-smb/react-around-auth/issues"
+  },
+  "homepage": "https://github.com/MurrK-smb/react-around-auth#readme"
+}
