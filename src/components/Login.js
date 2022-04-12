@@ -2,7 +2,7 @@ import React from "react";
 import AuthForm from "./AuthForm";
 
 function Login({ onLogin }) {
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = React.useState({
     email: "",
     password: "",
   });
@@ -17,11 +17,8 @@ function Login({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const userData = {
-      email,
-      password,
-    };
-    onLogin(userData);
+    const { email, password } = inputs;
+    onLogin(password, email);
   }
 
   return (

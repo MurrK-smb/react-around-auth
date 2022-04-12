@@ -2,7 +2,7 @@ import React from "react";
 import AuthForm from "./AuthForm";
 
 function Register({ onRegister }) {
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = React.useState({
     email: "",
     password: "",
   });
@@ -17,11 +17,8 @@ function Register({ onRegister }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const userData = {
-      email,
-      password,
-    };
-    onRegister(userData);
+    const { email, password } = inputs;
+    onRegister(password, email);
   }
 
   return (

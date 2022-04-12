@@ -1,5 +1,6 @@
 import React from "react";
-import { Route, Routes, Redirect, useNavigate } from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -8,6 +9,9 @@ import AddPlacePopup from "./AddPlacePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import DeletePopup from "./DeletePopup";
 import ImagePopup from "./ImagePopup";
+import Login from "./Login";
+import Register from "./Register";
+import InfoTooltip from "./InfoTooltip";
 import api from "../utils/api";
 import { register, login, checkToken } from "../utils/auth";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
@@ -23,12 +27,12 @@ function App() {
   const [selectedDeleteCard, setSelectedDeleteCard] = React.useState(undefined);
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
-  const [formValidity, setFormValidity] = useState(true);
-  const [errorMessage, setErrorMessage] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [tooltipOpen, setTooltipOpen] = useState(false);
-  const [status, setStatus] = useState("");
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [formValidity, setFormValidity] = React.useState(true);
+  const [errorMessage, setErrorMessage] = React.useState({});
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [tooltipOpen, setTooltipOpen] = React.useState(false);
+  const [status, setStatus] = React.useState("");
+  const [toggleMenu, setToggleMenu] = React.useState(false);
 
   const history = useNavigate();
 
@@ -239,7 +243,7 @@ function App() {
                     onCardClick={handleCardClick}
                     cards={cards}
                     onCardLike={handleCardLike}
-                    onCardDelete={handleConfirmationClick}
+                    onCardDelete={handleDeleteClick}
                   />
                 </ProtectedRoute>
               }
@@ -253,9 +257,9 @@ function App() {
               path="*"
               element={
                 loggedIn ? (
-                  <Redirect to="/" replace />
+                  <Navigate to="/" replace />
                 ) : (
-                  <Redirect to="/signin" replace />
+                  <Navigate to="/signin" replace />
                 )
               }
             />
