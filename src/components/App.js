@@ -157,8 +157,8 @@ function App() {
     history("/signin");
   };
 
-  const onRegister = (password, email) => {
-    register(password, email)
+  const handleRegisterSubmit = (email, password) => {
+    register(email, password)
       .then((res) => {
         if (res.data._id) {
           console.log("res OK");
@@ -176,13 +176,13 @@ function App() {
       });
   };
 
-  const onLogin = (password, email) => {
+  const handleLoginSubmit = (email, password) => {
     if (!password || !email) {
       setStatus("failed");
       setTooltipOpen(true);
       return;
     }
-    login(password, email)
+    login(email, password)
       .then((data) => {
         if (data.token) {
           handleLogin();
@@ -248,10 +248,13 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/signin" element={<Login onLogin={onLogin} />} />
+            <Route
+              path="/signin"
+              element={<Login handleLoginSubmit={handleLoginSubmit} />}
+            />
             <Route
               path="/signup"
-              element={<Register onRegister={onRegister} />}
+              element={<Register handleRegisterSubmit={handleRegisterSubmit} />}
             />
             <Route
               path="*"

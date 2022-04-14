@@ -1,7 +1,7 @@
 import React from "react";
 import AuthForm from "./AuthForm";
 
-function Register({ onRegister }) {
+function Register({ handleRegisterSubmit }) {
   const [inputs, setInputs] = React.useState({
     email: "",
     password: "",
@@ -18,7 +18,7 @@ function Register({ onRegister }) {
   function handleSubmit(e) {
     e.preventDefault();
     const { email, password } = inputs;
-    onRegister(password, email);
+    handleRegisterSubmit(email, password);
   }
 
   return (
@@ -27,7 +27,7 @@ function Register({ onRegister }) {
       handleSubmit={handleSubmit}
       handleChange={handleChange}
       inputs={inputs}
-      text="Already have an account?"
+      text="Already have an account? "
       link="/signin"
       linkText="Log in here!"
     />

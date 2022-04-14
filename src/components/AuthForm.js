@@ -16,7 +16,7 @@ function AuthForm({
         <h3 className="auth-form__title">{title}</h3>
         <input
           type="text"
-          name="name"
+          name="email"
           id="email"
           className="auth-form__input"
           placeholder="Email"
@@ -26,7 +26,7 @@ function AuthForm({
         />
         <input
           type="password"
-          name="name"
+          name="password"
           id="password"
           className="auth-form__input"
           placeholder="Password"
@@ -34,9 +34,7 @@ function AuthForm({
           value={inputs.password}
           required
         />
-        <button className="auth-form__submit" type="submit">
-          {title}
-        </button>
+        <button className="auth-form__submit">{title}</button>
       </form>
       <p className="auth-form__text">
         {text}

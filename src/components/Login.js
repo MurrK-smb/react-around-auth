@@ -1,7 +1,7 @@
 import React from "react";
 import AuthForm from "./AuthForm";
 
-function Login({ onLogin }) {
+function Login({ handleLoginSubmit }) {
   const [inputs, setInputs] = React.useState({
     email: "",
     password: "",
@@ -18,7 +18,7 @@ function Login({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     const { email, password } = inputs;
-    onLogin(password, email);
+    handleLoginSubmit(email, password);
   }
 
   return (
@@ -27,7 +27,7 @@ function Login({ onLogin }) {
       handleSubmit={handleSubmit}
       handleChange={handleChange}
       inputs={inputs}
-      text="Don't have an account?"
+      text="Don't have an account? "
       link="/signup"
       linkText="Sign up here!"
     />

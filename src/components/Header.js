@@ -20,11 +20,11 @@ function Header({ onSignOut, email }) {
                 }
                 onClick={() => setHeaderMenu((show) => !show)}
               ></button>
-              <div className="header__nav">
+              <div className="header__wrapper">
                 <p className="header__email">{email}</p>
-                <button className="header__button" onClick={onSignOut}>
+                <Link className="header__link" to="signin">
                   Sign out
-                </button>
+                </Link>
               </div>
             </>
           }
