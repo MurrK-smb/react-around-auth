@@ -1,9 +1,6 @@
 .modal__icon {
-  margin: 60px 0 32px;
-}
-
-@media screen and (max-width: 552px) {
-  .modal__icon {
-    margin: 50px 80px 40px;
-  }
+  width: 120px;
+  height: 120px;
+  margin: 0;
+  padding: 0;
 }

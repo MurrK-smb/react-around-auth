@@ -23,6 +23,7 @@ function App() {
     React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
+  const [tooltipOpen, setTooltipOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(undefined);
   const [selectedDeleteCard, setSelectedDeleteCard] = React.useState(undefined);
   const [currentUser, setCurrentUser] = React.useState({});
@@ -30,11 +31,19 @@ function App() {
   const [formValidity, setFormValidity] = React.useState(true);
   const [errorMessage, setErrorMessage] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [tooltipOpen, setTooltipOpen] = React.useState(false);
   const [status, setStatus] = React.useState("");
   const [toggleMenu, setToggleMenu] = React.useState(false);
 
   const history = useNavigate();
+
+  function closeAllPopups() {
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setIsDeletePopupOpen(false);
+    setTooltipOpen(false);
+    setSelectedCard(undefined);
+  }
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -109,14 +118,6 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  function closeAllPopups() {
-    setIsEditAvatarPopupOpen(false);
-    setIsEditProfilePopupOpen(false);
-    setIsAddPlacePopupOpen(false);
-    setIsDeletePopupOpen(false);
-    setSelectedCard(undefined);
-  }
-
   const checkValidity = (evt) => {
     const name = evt.target.name;
     setErrorMessage({ ...errorMessage, [name]: evt.target.validationMessage });
@@ -134,11 +135,13 @@ function App() {
           if (res) {
             setLoggedIn(true);
             history("/");
+            console.log("should be all good");
           } else {
-            localStorage.removeItem("jvt");
+            localStorage.removeItem("jwt");
+            console.log("checkToken() failed for some reason");
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log("something went really wrong"));
     }
   };
 

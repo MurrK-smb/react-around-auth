@@ -2,9 +2,7 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import around from "../images/around.svg";
 
-function Header({ onSignOut, email }) {
-  const [headerMenu, setHeaderMenu] = React.useState(false);
-
+function Header({ handleLogout, email }) {
   return (
     <header className="header">
       <img className="header__logo" src={around} alt="'Around The U.S.' logo" />
@@ -14,15 +12,13 @@ function Header({ onSignOut, email }) {
           path="/"
           element={
             <>
-              <button
-                className={
-                  headerMenu ? "header__close-icon" : "header__hamburger-icon"
-                }
-                onClick={() => setHeaderMenu((show) => !show)}
-              ></button>
               <div className="header__wrapper">
                 <p className="header__email">{email}</p>
-                <Link className="header__link" to="signin">
+                <Link
+                  className="header__link"
+                  onClick={handleLogout}
+                  to="/signin"
+                >
                   Sign out
                 </Link>
               </div>
@@ -30,18 +26,18 @@ function Header({ onSignOut, email }) {
           }
         />
         <Route
-          path="/signup"
+          path="/signin"
           element={
-            <Link className="header__link" to="signin">
-              Sign in
+            <Link className="header__link" to="/signup">
+              Sign up
             </Link>
           }
         />
         <Route
-          path="/signin"
+          path="/signup"
           element={
-            <Link className="header__link" to="signout">
-              Sign up
+            <Link className="header__link" to="/signin">
+              Sign in
             </Link>
           }
         />
