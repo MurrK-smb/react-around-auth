@@ -176,7 +176,8 @@ function App() {
         console.log(err);
         setStatus("failed");
         setTooltipOpen(true);
-      });
+      })
+      .finally(() => setTooltipOpen(true));
   };
 
   const handleLoginSubmit = (email, password) => {
