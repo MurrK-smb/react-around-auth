@@ -175,7 +175,6 @@ function App() {
       .catch((err) => {
         console.log(err);
         setStatus("failed");
-        setTooltipOpen(true);
       })
       .finally(() => setTooltipOpen(true));
   };
