@@ -5,7 +5,7 @@ import closeImg from "../images/x-button.svg";
 
 function InfoTooltip({ isOpen, onClose, status }) {
   return (
-    <div className={`modal ${isOpen && "modal__open"}`}>
+    <div className={`modal ${isOpen && "modal_open"}`}>
       <div className="modal__body modal__body_info">
         <button
           type="button"

@@ -190,6 +190,8 @@ function App() {
         if (data.token) {
           handleLogin();
           history("/");
+          setStatus("success");
+          setTooltipOpen(true);
         }
       })
       .catch((err) => {
